@@ -50,3 +50,16 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# cmake files
+cmake-build-debug
+
+# idea files
+.idea
+
+# macos files
+.DS_Store
+
+# compiled binaries
+server
+neko
