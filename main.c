@@ -1,15 +1,26 @@
 #include "http.h"
+#include "mapper.h"
 #include <sys/stat.h>
 
-#define CHUNK_SIZE 1024 // read 1024 bytes at a time
+#define CHUNK_SIZE 1024// read 1024 bytes at a time
 
 // Public directory settings
 #define PUBLIC_DIR "./public"
 #define INDEX_HTML "/index.html"
 #define NOT_FOUND_HTML "/404.html"
 
+Redirect *redirects = NULL;
+
 int main(int c, char **v) {
- char *port = c == 1 ? "8000" : v[1];
+  char *port = c == 1 ? "8000" : v[1];
+  char *configPath = c > 2 ? v[2] : "./redirects.conf";
+
+  redirects = parse_redirects(configPath);
+  if (redirects == NULL) {
+    fprintf(stderr, "Warning: No redirects loaded from %s\n", configPath);
+  }
+
+
   serve_forever(port);
   return 0;
 }

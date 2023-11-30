@@ -3,4 +3,6 @@ project(neko C)
 
 set(CMAKE_C_STANDARD 23)
 
-add_executable(neko main.c http.h http.c)
+add_executable(neko main.c http.h http.c
+        mapper.c
+        mapper.h)

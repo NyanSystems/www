@@ -15,6 +15,8 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+#include "mapper.h"
+
 #define MAX_CONNECTIONS 1000
 #define BUF_SIZE 65535
 #define QUEUE_SIZE 1000000
@@ -27,11 +29,11 @@ static void respond(int);
 static char *buf;
 
 // Client request
-char *method, // "GET" or "POST"
-    *uri,     // "/index.html" things before '?'
-    *qs,      // "a=1&b=2" things after  '?'
-    *prot,    // "HTTP/1.1"
-    *payload; // for POST
+char *method,// "GET" or "POST"
+  *uri,      // "/index.html" things before '?'
+  *qs,       // "a=1&b=2" things after  '?'
+  *prot,     // "HTTP/1.1"
+  *payload;  // for POST
 
 int payload_size;
 
@@ -60,7 +62,7 @@ void serve_forever(const char *PORT) {
   // ACCEPT connections
   while (1) {
     addrlen = sizeof(clientaddr);
-    clients[slot] = accept(listenfd, (struct sockaddr *)&clientaddr, &addrlen);
+    clients[slot] = accept(listenfd, (struct sockaddr *) &clientaddr, &addrlen);
 
     if (clients[slot] < 0) {
       perror("accept() error");
@@ -140,12 +142,12 @@ static void uri_unescape(char *uri) {
   char *dst = uri;
 
   // Skip initial non-encoded character
-  while (*src && !isspace((int)(*src)) && (*src != '%'))
+  while (*src && !isspace((int) (*src)) && (*src != '%'))
     src++;
 
   // Replace encoded characters with corresponding code.
   dst = src;
-  while (*src && !isspace((int)(*src))) {
+  while (*src && !isspace((int) (*src))) {
     if (*src == '+')
       chr = ' ';
     else if ((*src == '%') && src[1] && src[2]) {
@@ -168,11 +170,11 @@ void respond(int slot) {
   buf = malloc(BUF_SIZE);
   rcvd = recv(clients[slot], buf, BUF_SIZE, 0);
 
-  if (rcvd < 0) // receive error
+  if (rcvd < 0)// receive error
     fprintf(stderr, ("recv() error\n"));
-  else if (rcvd == 0) // receive socket closed
+  else if (rcvd == 0)// receive socket closed
     fprintf(stderr, "Client disconnected unexpectedly.\n");
-  else // message received
+  else// message received
   {
     buf[rcvd] = '\0';
 
@@ -187,9 +189,9 @@ void respond(int slot) {
     qs = strchr(uri, '?');
 
     if (qs)
-      *qs++ = '\0'; // split URI
+      *qs++ = '\0';// split URI
     else
-      qs = uri - 1; // use an empty string
+      qs = uri - 1;// use an empty string
 
     header_t *h = reqhdr;
     char *t, *t2;
@@ -213,7 +215,7 @@ void respond(int slot) {
         break;
     }
     t = strtok(NULL, "\r\n");
-    t2 = request_header("Content-Length"); // and the related header if there is
+    t2 = request_header("Content-Length");// and the related header if there is
     payload = t;
     payload_size = t2 ? atol(t2) : (rcvd - (t - buf));
 
@@ -221,6 +223,23 @@ void respond(int slot) {
     int clientfd = clients[slot];
     dup2(clientfd, STDOUT_FILENO);
     close(clientfd);
+
+    for (Redirect *current = redirects; current != NULL; current = current->next) {
+      if (uri[0] == '/') {
+        uri++;
+      }
+
+      if (strcmp(uri, current->key) == 0) {
+        printf("HTTP/1.1 301 Moved Permanently\r\n");
+        printf("Location: %s\r\n\r\n", current->url);
+
+        fflush(stdout);
+        shutdown(STDOUT_FILENO, SHUT_WR);
+        close(STDOUT_FILENO);
+        free(buf);
+        return;
+      }
+    }
 
     // call router
     route();

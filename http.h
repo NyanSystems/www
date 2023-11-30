@@ -8,6 +8,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "mapper.h"
+
 // Client request
 extern char *method, // "GET" or "POST"
     *uri,            // "/index.html" things before '?'
@@ -27,6 +29,8 @@ typedef struct {
 } header_t;
 static header_t reqhdr[17] = {{"\0", "\0"}};
 header_t *request_headers(void);
+
+extern Redirect *redirects;
 
 // user shall implement this function
 
