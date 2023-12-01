@@ -350,11 +350,11 @@ ul, li {
 }
 #pixelated-text {
     position: absolute;
-    top: 10px;
+    top: 5%;
     left: 50%;
     transform: translateX(-50%);
-    font-family: 'Press Start 2P', cursive; /* A commonly used pixelated font */
-    font-size: 20px;
+    font-family: 'Press Start 2P', monospace; /* A commonly used pixelated font */
+    font-size: xxx-large;
     color: white;
     text-align: center;
 }
