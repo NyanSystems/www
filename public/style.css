@@ -348,13 +348,28 @@ ul, li {
 .stars li:nth-child(12) i {
   animation-delay: 0.91667s;
 }
-#pixelated-text {
-    position: absolute;
+
+.pixelated-text {
+  position: absolute;
+  font-family: 'Press Start 2P', monospace;
+  text-align: center;
+  color: white;
+}
+
+.pixelated-text > a {
+  color: inherit;
+}
+
+#pixelated-header {
     top: 5%;
     left: 50%;
     transform: translateX(-50%);
-    font-family: 'Press Start 2P', monospace; /* A commonly used pixelated font */
     font-size: xxx-large;
-    color: white;
-    text-align: center;
+}
+
+#pixelated-footer {
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: large;
 }
