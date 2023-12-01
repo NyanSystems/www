@@ -63,3 +63,4 @@ cmake-build-debug
 # compiled binaries
 server
 neko
+build
