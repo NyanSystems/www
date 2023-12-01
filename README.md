@@ -34,7 +34,7 @@ Then run the following commands:
 
 ```bash
 make
-./neko # or ./neko [port]
+./www # or ./www [port] [redirects.conf]
 ```
 
 ## License
