@@ -1,3 +1,8 @@
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url(fonts/PressStart2P.ttf);
+}
+
 body {
   background: #036;
   overflow: hidden;
@@ -342,4 +347,14 @@ ul, li {
 }
 .stars li:nth-child(12) i {
   animation-delay: 0.91667s;
+}
+#pixelated-text {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Press Start 2P', cursive; /* A commonly used pixelated font */
+    font-size: 20px;
+    color: white;
+    text-align: center;
 }
