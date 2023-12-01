@@ -25,6 +25,7 @@ It's also extensible, so you can add your own functions to the server.
 - Essentials included out of the box
 - Route based kinda MVC
 - Static content hosting
+- Redirect map config
 
 ## Compiling
 
