@@ -4,9 +4,9 @@
 
 C static socket server (fork of [@orzklv/neko](https://github.com/orzklv/neko))
 
-[![GitHub top language](https://img.shields.io/github/languages/top/orzklv/neko?style=flat-square&logo=github)](https://github.com/orzklv/neko)
-[![Channel](https://img.shields.io/badge/Chat-grey?style=flat-square&logo=telegram)](https://t.me/orzklvb)
-[![Makefile CI](https://github.com/orzklv/neko/actions/workflows/ci.yml/badge.svg)](https://github.com/orzklv/neko/actions/workflows/ci.yml)
+[![GitHub top language](https://img.shields.io/github/languages/top/orzklv/neko?style=flat-square&logo=github)](https://github.com/NyanSystems/.github)
+[![Channel](https://img.shields.io/badge/Chat-grey?style=flat-square&logo=telegram)](https://t.me/nyansystems)
+[![Makefile CI](https://github.com/NyanSystems/www/actions/workflows/ci.yml/badge.svg)](https://github.com/NyanSystems/www/actions/workflows/ci.yml)
 
 </header>
 
