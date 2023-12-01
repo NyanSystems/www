@@ -1,0 +1,27 @@
+{
+    "version": 2,
+    "name": "nyan-systems",
+    "public": true,
+    "redirects": [
+        {
+            "source": "/telegram",
+            "destination": "https://t.me/nyansystems",
+            "permanent": false
+        },
+        {
+            "source": "/crystalnyan",
+            "destination": "https://t.me/nyanblog",
+            "permanent": false
+        },
+        {
+            "source": "/telegram",
+            "destination": "https://t.me/orzklvb",
+            "permanent": false
+        },
+        {
+            "source": "/website",
+            "destination": "https://crystal.nyan.uz",
+            "permanent": false
+        }
+    ]
+}
