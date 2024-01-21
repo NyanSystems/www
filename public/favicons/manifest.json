@@ -1,5 +1,10 @@
 {
 	"name": "Nyan Systems Inc.",
+	"short_name": "Nyan Systems",
+	"start_url": "https:\/\/nyan.uz\/",
+	"display": "standalone",
+	"background_color": "#036",
+	"theme_color": "#036",
 	"icons": [
 		{
 			"src": "\/favicons\/favicon-36.png",
