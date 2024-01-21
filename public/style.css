@@ -376,6 +376,17 @@ ul, li {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  font-size: x-large;
+}
+
+/* for mobile screens, smaller text */
+@media (max-width: 600px) {
+  #pixelated-header {
+    font-size: xx-large;
+  }
+  #pixelated-footer {
+    font-size: large;
+  }
 }
 
 .footer-link {
