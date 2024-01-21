@@ -371,5 +371,15 @@ ul, li {
   bottom: 5%;
   left: 50%;
   transform: translateX(-50%);
-  font-size: large;
+  text-align: center;
+  padding: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-link {
+  margin: 0 10px 15px;
+  white-space: nowrap;
+  position: relative;
 }
