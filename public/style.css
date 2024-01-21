@@ -365,6 +365,7 @@ ul, li {
     left: 50%;
     transform: translateX(-50%);
     font-size: xxx-large;
+    line-height: 1.4;
 }
 
 #pixelated-footer {
